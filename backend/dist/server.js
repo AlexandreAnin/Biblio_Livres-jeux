@@ -9,6 +9,10 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const error_middleware_1 = require("./middleware/error.middleware");
 // Importer les routes
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
+const books_routes_1 = __importDefault(require("./routes/books.routes"));
+const passages_routes_1 = __importDefault(require("./routes/passages.routes"));
+const characters_routes_1 = __importDefault(require("./routes/characters.routes"));
+const saves_routes_1 = __importDefault(require("./routes/saves.routes"));
 // Charger les variables d'environnement
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -35,6 +39,10 @@ app.get('/health', (req, res) => {
 });
 // API Routes
 app.use('/api/auth', auth_routes_1.default);
+app.use('/api/books', books_routes_1.default);
+app.use('/api/books', passages_routes_1.default); // /api/books/:slug/passages/:number
+app.use('/api/characters', characters_routes_1.default);
+app.use('/api/saves', saves_routes_1.default);
 // 404 handler
 app.use((req, res) => {
     res.status(404).json({ error: 'Route not found' });
@@ -45,9 +53,9 @@ app.listen(port, () => {
     console.log(`
         ╔═══════════════════════════════════════════════════════╗
         ║                                                       ║
-        ║   🚀 Server running on http://localhost:${port}      ║
-        ║   📚 Environment: ${process.env.NODE_ENV || 'development'}              ║
-        ║   🔐 CORS Origin: ${process.env.CORS_ORIGIN || 'http://localhost:3000'} ║
+        ║   🚀 Server running on http://localhost:${port}          ║
+        ║   📚 Environment: ${process.env.NODE_ENV || 'development'}                         ║
+        ║   🔐 CORS Origin: ${process.env.CORS_ORIGIN || 'http://localhost:3000'}               ║
         ║                                                       ║
         ╚═══════════════════════════════════════════════════════╝
         `);

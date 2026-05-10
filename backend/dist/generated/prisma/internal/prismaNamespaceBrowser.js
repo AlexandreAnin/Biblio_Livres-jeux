@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryMode = exports.SortOrder = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.JsonNullValueFilter = exports.NullsOrder = exports.QueryMode = exports.JsonNullValueInput = exports.NullableJsonNullValueInput = exports.SortOrder = exports.SaveGameScalarFieldEnum = exports.CharacterScalarFieldEnum = exports.ChoiceScalarFieldEnum = exports.PassageScalarFieldEnum = exports.BookScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -75,7 +75,12 @@ exports.JsonNull = runtime.JsonNull;
  */
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
-    User: 'User'
+    User: 'User',
+    Book: 'Book',
+    Passage: 'Passage',
+    Choice: 'Choice',
+    Character: 'Character',
+    SaveGame: 'SaveGame'
 };
 /*
  * Enums
@@ -94,11 +99,94 @@ exports.UserScalarFieldEnum = {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
+exports.BookScalarFieldEnum = {
+    id: 'id',
+    title: 'title',
+    slug: 'slug',
+    author: 'author',
+    series: 'series',
+    seriesIndex: 'seriesIndex',
+    coverImage: 'coverImage',
+    description: 'description',
+    isPublished: 'isPublished',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.PassageScalarFieldEnum = {
+    id: 'id',
+    bookId: 'bookId',
+    number: 'number',
+    title: 'title',
+    content: 'content',
+    type: 'type',
+    enemyName: 'enemyName',
+    enemySkill: 'enemySkill',
+    enemyEndurance: 'enemyEndurance',
+    isPsychic: 'isPsychic',
+    canFlee: 'canFlee',
+    conditions: 'conditions',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.ChoiceScalarFieldEnum = {
+    id: 'id',
+    passageId: 'passageId',
+    text: 'text',
+    targetPassageNumber: 'targetPassageNumber',
+    conditions: 'conditions'
+};
+exports.CharacterScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    bookId: 'bookId',
+    name: 'name',
+    skill: 'skill',
+    skillMax: 'skillMax',
+    endurance: 'endurance',
+    enduranceMax: 'enduranceMax',
+    gold: 'gold',
+    disciplines: 'disciplines',
+    masteredWeapon: 'masteredWeapon',
+    backpack: 'backpack',
+    weapons: 'weapons',
+    specialItems: 'specialItems',
+    pickedItems: 'pickedItems',
+    weaponInHand: 'weaponInHand',
+    currentPassageNumber: 'currentPassageNumber',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.SaveGameScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    characterId: 'characterId',
+    currentPassage: 'currentPassage',
+    characterData: 'characterData',
+    gameState: 'gameState',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
 exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
 };
+exports.NullableJsonNullValueInput = {
+    DbNull: exports.DbNull,
+    JsonNull: exports.JsonNull
+};
+exports.JsonNullValueInput = {
+    JsonNull: exports.JsonNull
+};
 exports.QueryMode = {
     default: 'default',
     insensitive: 'insensitive'
+};
+exports.NullsOrder = {
+    first: 'first',
+    last: 'last'
+};
+exports.JsonNullValueFilter = {
+    DbNull: exports.DbNull,
+    JsonNull: exports.JsonNull,
+    AnyNull: exports.AnyNull
 };

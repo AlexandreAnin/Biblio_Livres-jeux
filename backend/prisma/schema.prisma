@@ -20,8 +20,128 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
  
-  //characters Character[]
-  //saves      SaveGame[]
+  characters Character[]
+  saves      SaveGame[]
  
-  //@@map("users")
+  @@map("users")
+}
+
+model Book {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  author      String
+  series      String?
+  seriesIndex Int?
+  coverImage  String?
+  description String?  @db.Text
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+ 
+  passages   Passage[]
+  characters Character[]
+ 
+  @@map("books")
+}
+
+model Passage {
+  id      String @id @default(uuid())
+  bookId  String
+  number  Int
+  title   String?
+  content String @db.Text
+  type    String @default("normal")
+ 
+  // Combat
+  enemyName      String?
+  enemySkill     Int?
+  enemyEndurance Int?
+  isPsychic      Boolean @default(false)
+  canFlee        Boolean @default(true)
+ 
+  // Conditions (JSON)
+  conditions Json?
+ 
+  book    Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  choices Choice[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  @@unique([bookId, number])
+  @@index([bookId])
+  @@map("passages")
+}
+
+model Choice {
+  id                  String @id @default(uuid())
+  passageId           String
+  text                String
+  targetPassageNumber Int
+  conditions          Json?
+ 
+  passage Passage @relation(fields: [passageId], references: [id], onDelete: Cascade)
+ 
+  @@map("choices")
+}
+
+model Character {
+  id       String @id @default(uuid())
+  userId   String
+  bookId   String
+  name     String
+ 
+  // Stats
+  skill        Int @default(10)
+  skillMax     Int @default(10)
+  endurance    Int @default(20)
+  enduranceMax Int @default(20)
+  gold         Int @default(0)
+ 
+  // Disciplines
+  disciplines    String[]
+  masteredWeapon String?
+ 
+  // Inventaire (JSON)
+  backpack     Json     @default("[]")
+  weapons      Json     @default("[]")
+  specialItems Json     @default("[]")
+  pickedItems  String[] @default([])
+ 
+  // Combat
+  weaponInHand String?
+ 
+  // Progression
+  currentPassageNumber Int @default(1)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user  User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book  Book       @relation(fields: [bookId], references: [id])
+  saves SaveGame[]
+ 
+  @@index([userId])
+  @@index([bookId])
+  @@map("characters")
+}
+
+model SaveGame {
+  id          String @id @default(uuid())
+  userId      String
+  characterId String
+ 
+  currentPassage Int
+  characterData  Json
+  gameState      Json @default("{}")
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  character Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+ 
+  @@index([userId])
+  @@map("save_games")
 }

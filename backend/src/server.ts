@@ -5,6 +5,10 @@ import { errorHandler } from './middleware/error.middleware';
 
 // Importer les routes
 import authRoutes from './routes/auth.routes';
+import booksRoutes from './routes/books.routes';
+import passagesRoutes from './routes/passages.routes';
+import charactersRoutes from './routes/characters.routes';
+import savesRoutes from './routes/saves.routes';
 
 // Charger les variables d'environnement
 dotenv.config();
@@ -39,6 +43,10 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/books', booksRoutes);
+app.use('/api/books', passagesRoutes); // /api/books/:slug/passages/:number
+app.use('/api/characters', charactersRoutes);
+app.use('/api/saves', savesRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -52,9 +60,9 @@ app.listen(port, () => {
     console.log(`
         ╔═══════════════════════════════════════════════════════╗
         ║                                                       ║
-        ║   🚀 Server running on http://localhost:${port}      ║
-        ║   📚 Environment: ${process.env.NODE_ENV || 'development'}              ║
-        ║   🔐 CORS Origin: ${process.env.CORS_ORIGIN || 'http://localhost:3000'} ║
+        ║   🚀 Server running on http://localhost:${port}          ║
+        ║   📚 Environment: ${process.env.NODE_ENV || 'development'}                         ║
+        ║   🔐 CORS Origin: ${process.env.CORS_ORIGIN || 'http://localhost:3000'}               ║
         ║                                                       ║
         ╚═══════════════════════════════════════════════════════╝
         `);
