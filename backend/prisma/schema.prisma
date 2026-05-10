@@ -19,4 +19,9 @@ model User {
   password  String   // Hash bcrypt
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+ 
+  //characters Character[]
+  //saves      SaveGame[]
+ 
+  //@@map("users")
 }

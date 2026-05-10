@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { PrismaClient } from "./../generated/prisma/client.js";
+import { PrismaClient } from "../generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const connectionString = process.env.DATABASE_URL;
@@ -7,26 +7,4 @@ const connectionString = process.env.DATABASE_URL;
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
-// Example query to create a user based on the example schema
-
-async function main() {
-  const user = await prisma.user.create({
-    data: {
-      username: 'AlexAdmin',
-      email: 'alexadmin@admin.com',
-      password: 'test1234'
-    },
-  })
-
-  console.log(user)
-}
-
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+export default prisma ;
