@@ -108,7 +108,7 @@ export default function BookDetailPage() {
             <div className="grid gap-8 md:grid-cols-2">
               {/* Couverture */}
               <div>
-                <div className="aspect-[2/3] overflow-hidden rounded-md bg-background">
+                <div className="aspect-2/3 overflow-hidden rounded-md bg-background">
                   {book.coverImage ? (
                     <Image
                       src={book.coverImage}
