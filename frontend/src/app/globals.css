@@ -1,21 +1,156 @@
+/* Police personnalisée*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
  
-:root {
-  /* Couleurs personnalisées */
+/*:root {
   --color-primary: #8b6914;
   --color-primary-dark: #5a4a0a;
   --color-primary-light: #d4af37;
   
-  --color-background: #1a1410;
+  --color-background: #1d1c19;
   --color-background-light: #2a1810;
   
-  --color-text: #f0e68c;
+  --color-text: #0c0c0c;
   --color-text-muted: #b8a678;
+  --color-text-perso: #0b471a;
 }
  
 body {
   background-color: var(--color-background);
   color: var(--color-text);
+}
+
+.text-red {
+  color: var(--color-text-perso);
+}*/
+
+
+/*Titre de la Bibliothèque*/
+.library-title {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 80px;
+  font-weight: 700;
+  color: #000000;
+  text-shadow: 
+    1px 1px 0 #ffffff,
+    -1px -1px 0 #ffffff,
+    1px -1px 0 #ffffff,
+    -1px 1px 0 #ffffff,
+    3px 3px 8px rgba(255, 255, 255, 0.8);
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .library-title {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .library-title {
+    font-size: 64px;
+  }
+}
+
+/*Texte de la bibliothèque*/
+.library-text {
+  font-family: 'Crimson Text', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+  text-shadow: 
+    0.5px 0.5px 0 #ffffff,
+    -0.5px -0.5px 0 #ffffff,
+    0.5px -0.5px 0 #ffffff,
+    -0.5px 0.5px 0 #ffffff,
+    2px 2px 6px rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.library-text-sm {
+  font-size: 18px;
+}
+
+.library-text-lg {
+  font-size: 26px;
+}
+
+.library-text-xl {
+  font-size: 30px;
+}
+
+@media (max-width: 640px) {
+  .library-text {
+    font-size: 18px;
+  }
+}
+
+/*Boutons de la bibliothèque*/
+.library-button {
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+  color: #f5f5dc;
+  border: 3px solid #d4a373;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 200px;
+  text-align: center;
+}
+
+.library-button:hover {
+  background: linear-gradient(135deg, #a0522d 0%, #7a5230 100%);
+  border-color: #daa520;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.library-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.library-button-secondary {
+  background: linear-gradient(135deg, #2c5530 0%, #1a3a1d 100%);
+  border-color: #4a7c59;
+}
+
+.library-button-secondary:hover {
+  background: linear-gradient(135deg, #3a6d3f 0%, #2a4a2d 100%);
+  border-color: #5a9c6a;
+}
+
+@media (max-width: 640px) {
+  .library-button {
+    font-size: 18px;
+    padding: 12px 28px;
+    min-width: 160px;
+  }
+}
+
+/* Supprimer les marges blanches sur les côtés */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Espacement entre les boutons */
+.library-button + .library-button {
+  margin-left: 24px;
 }

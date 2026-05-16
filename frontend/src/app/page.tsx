@@ -1,57 +1,45 @@
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
-      <div className="text-center">
-        <h1 className="mb-4 text-6xl font-bold text-primary-light">
-          📚 Livres-Jeux
-        </h1>
-        <p className="mb-8 text-xl text-text">
-          Vivez des aventures épiques dans des univers fantastiques
-        </p>
+    <div className="relative flex h-[calc(100vh-78px)] items-center justify-center bg-cover bg-center bg-no-repeat"
+      style={{backgroundImage: "url('/images/backgrounds/HomeBackground.png')"}}>
+        {/* Overlay sombre */}
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="flex gap-4 justify-center">
-          <Link href="/register">
-            <Button size="lg">Commencer l&apos;aventure</Button>
-          </Link>
-          <Link href="/books">
-            <Button variant="secondary" size="lg">
-              Parcourir les livres
-            </Button>
-          </Link>
-        </div>
+      {/* Contenu */}
+      <div className="relative text-center">
+        <div className="text-center">
+          {/* Titre principal */}
+          <h1 className="library-title mb-8">
+            La bibliothèque d&apos;Alexandre
+          </h1>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <div className="rounded-lg border-2 border-primary bg-background-light p-6">
-            <div className="mb-2 text-4xl">⚔️</div>
-            <h3 className="mb-2 text-xl font-bold text-primary-light">
-              Combat
-            </h3>
-            <p className="text-text-muted">
-              Affrontez des ennemis redoutables avec un système de combat stratégique
-            </p>
-          </div>
+          {/* Texte de bienvenue */}
+          <p className="library-text mb-4">
+            Venez découvrir ma collection de Livres Dont Vous Êtes le Héros.
+          </p>
+          <p className="library-text mb-4">
+            Prenez un livre et installez-vous confortablement.
+          </p>
 
-          <div className="rounded-lg border-2 border-primary bg-background-light p-6">
-            <div className="mb-2 text-4xl">🎒</div>
-            <h3 className="mb-2 text-xl font-bold text-primary-light">
-              Inventaire
-            </h3>
-            <p className="text-text-muted">
-              Gérez vos objets, armes et équipement pour survivre
-            </p>
-          </div>
+          {/* Texte nouveaux venus */}
+          <p className="library-text mb-10">
+            Nouveaux venus, venez vous inscrire sur le registre.
+          </p>
 
-          <div className="rounded-lg border-2 border-primary bg-background-light p-6">
-            <div className="mb-2 text-4xl">🌟</div>
-            <h3 className="mb-2 text-xl font-bold text-primary-light">
-              Progression
-            </h3>
-            <p className="text-text-muted">
-              Développez votre personnage et débloquez de nouvelles capacités
-            </p>
+          {/* Boutons */}
+          <div className="flex items-center justify-center">
+            <Link href="/login">
+              <button className="library-button">
+                Prenez un livre
+              </button>
+            </Link>
+            <Link href="/register">
+              <button className="library-button library-button-secondary">
+                S&apos;inscrire
+              </button>
+            </Link>
           </div>
         </div>
       </div>
